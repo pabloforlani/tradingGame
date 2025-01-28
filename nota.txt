@@ -1,0 +1,2 @@
+ver porque no aparecen las ordenes en las tablas y que se actualize el pnl en tiempo real, el total 
+y el de ordenes abiertas y cerradas
