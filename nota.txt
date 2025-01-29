@@ -1,2 +1,11 @@
-ver porque no aparecen las ordenes en las tablas y que se actualize el pnl en tiempo real, el total 
-y el de ordenes abiertas y cerradas
+Acciones pendientes:
+
+- modificar el array de precios historicos para que solo lo tome al principio y grafique el historico mas los nuevos
+
+
+
+
+
+Observaciones importantes:
+
+* Al precio del bitcoin se le suma un random en la unidad para que no quede tan plano el grafico. (Math.random() * 15).

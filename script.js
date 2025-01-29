@@ -15,10 +15,8 @@ async function fetchPrice() {
     const response = await fetch(
       "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
     );
-    //const response = await fetch("https://api.kraken.com/0/public/Ticker?pair=XXBTZUSD");
     const data = await response.json();
     return parseFloat(data.price);
-    //return parseFloat(data.result.XXBTZUSD.p[0]); //Precio promedio ponderado en las últimas 24 horas.
   } catch (error) {
     console.error("Error fetching price:", error);
     return null;
@@ -26,11 +24,8 @@ async function fetchPrice() {
 }
 
 function updatePrice(price) {
-    currentPrice = parseFloat(price + Math.random() / 100).toFixed(5);
-//   document.getElementById("current-price").textContent = (
-//     price +
-//     Math.random() / 100
-//   ).toFixed(5);
+    currentPrice = parseFloat((price + Math.random() * 15).toFixed(2));
+    
 }
 
 function updatePnL() {
@@ -71,18 +66,18 @@ function updatePnL() {
   }
 
   if (orders.length == 0) {
-    //totalPnL = closedPnL;
-    //totalPnLPorc = closedPnLPorc
     openPnL = 0;
     openPnLPorc = 0;
   }
 
-  document.getElementById("pnl").innerHTML = `<h3>Total PNL: ${totalPnL.toFixed(
-    2
-  )} USDT | ${totalPnLPorc.toFixed(2)}%</h3>
-             (Open: ${openPnL.toFixed(2)} | ${openPnLPorc.toFixed(
-    2
-  )}% / Closed: ${closedPnL.toFixed(2)} | ${closedPnLPorc.toFixed(2)}%)`;
+  //---------- seccion que actualiza el pnl en el html (PnL Section) -------------
+  // document.getElementById("pnl").innerHTML = `<h3>Total PNL: ${totalPnL.toFixed(
+  //   2
+  // )} USDT | ${totalPnLPorc.toFixed(2)}%</h3>
+  //            (Open: ${openPnL.toFixed(2)} | ${openPnLPorc.toFixed(
+  //   2
+  // )}% / Closed: ${closedPnL.toFixed(2)} | ${closedPnLPorc.toFixed(2)}%)`;
+  // -------------------------------------------------------------------------
 
   renderOrders();
 }
@@ -452,21 +447,16 @@ function updateHeader() {
   document.getElementById("header-balance").textContent = `${balance.toFixed(
     2
   )} USDT`;
-  document.getElementById("header-current-price").textContent = currentPrice || 0;
+  document.getElementById("header-current-price").textContent = currentPrice || "Loading...";
 
   // Actualizar PNL
-  const totalPnL = parseFloat(
-    document.getElementById("pnl").textContent.split(": ")[1]
-  );
-  const openPnL = orders
-    .reduce((sum, order) => sum + calculatePnL(order), 0)
-    .toFixed(2);
-  document.getElementById("header-pnl").textContent = `${totalPnL.toFixed(
-    2
-  )} USDT`;
-  document.getElementById("open-orders-pnl").textContent = openPnL;
-  document.getElementById("closed-orders-pnl").textContent =
-    closedPnL.toFixed(2);
+  
+  document.getElementById("header-pnl").textContent = `${totalPnL.toFixed(2)} USDT`;
+  document.getElementById("open-orders-pnl").textContent = openPnL.toFixed(2);
+  document.getElementById("closed-orders-pnl").textContent = closedPnL.toFixed(2);
+  document.getElementById("header-pnl-porc").textContent = `${totalPnLPorc.toFixed(2)} USDT`;
+  document.getElementById("open-orders-pnl-porc").textContent = openPnLPorc.toFixed(2);
+  document.getElementById("closed-orders-pnl-porc").textContent = closedPnLPorc.toFixed(2);
 }
 
 (async () => {
