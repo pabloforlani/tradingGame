@@ -24,7 +24,8 @@ async function fetchPrice() {
 }
 
 function updatePrice(price) {
-    currentPrice = parseFloat((price + Math.random() * 15).toFixed(2));
+    //currentPrice = parseFloat((price + Math.random() * 15).toFixed(2));
+    currentPrice = parseFloat((price).toFixed(2));
     
 }
 
@@ -92,17 +93,17 @@ function renderOrders() {
       const row = document.createElement("tr");
       row.className = order.pnl >= 0 ? "profit" : "loss";
       row.innerHTML = `
+      <td><button class="btn-close" onclick="closeOrder(${
+        orders.length - 1 - index
+      })">Close</button></td>
                     <td>${order.type}</td>
+                    <td>${order.pnlPorc.toFixed(2)}</td>
+                    <td>${order.pnl.toFixed(2)}</td>
                     <td>${order.price.toFixed(2)}</td>
                     <td>${order.leverage}</td>
                     <td>${order.investment.toFixed(2)}</td>
                     <td>${order.takeProfit}%</td>
                     <td>${order.stopLoss}%</td>
-                    <td>${order.pnl.toFixed(2)}</td>
-                    <td>${order.pnlPorc.toFixed(2)}</td>
-                    <td><button class="btn-close" onclick="closeOrder(${
-                      orders.length - 1 - index
-                    })">Close</button></td>
                 `;
       ordersList.appendChild(row);
     });
@@ -119,12 +120,12 @@ function renderClosedOrders() {
       row.className = order.pnl >= 0 ? "profit" : "loss";
       row.innerHTML = `
                     <td>${order.type}</td>
+                    <td>${order.pnlPorc.toFixed(2)}</td>
+                    <td>${order.pnl.toFixed(2)}</td>
                     <td>${order.price.toFixed(2)}</td>
                     <td>${order.closePrice.toFixed(2)}</td>
                     <td>${order.leverage}</td>
                     <td>${order.investment.toFixed(2)}</td>
-                    <td>${order.pnl.toFixed(2)}</td>
-                    <td>${order.pnlPorc.toFixed(2)}</td>
                 `;
       closedOrdersList.appendChild(row);
     });
@@ -227,6 +228,12 @@ document
 document
   .getElementById("close-all-orders")
   .addEventListener("click", closeAllOrders);
+
+  window.addEventListener('resize', () => {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+    drawChart(); // Vuelve a dibujar el gráfico
+});
 
 document.getElementById("1x-button").addEventListener("click", () => {
   zoom = 1;

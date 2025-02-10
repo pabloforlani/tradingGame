@@ -15,6 +15,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Sombra fuerte para destacar */
   padding: 20px;
+  
 }
 
 h3 {
@@ -88,8 +89,12 @@ button:hover {
 }
 
 /* Tables */
+.section {
+  overflow-x: auto; /* Agrega desplazamiento horizontal si es necesario */
+}
 table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   border-radius: 12px;
   overflow: hidden;
@@ -133,6 +138,10 @@ canvas {
   border-radius: 12px;
   background-color: #1e1e1e; /* Fondo oscuro */
   box-shadow: 2px 2px 10px rgba(192, 221, 29, 0.8); /* Sombra */
+
+  width: 100%;
+    height: auto;
+    max-width: 600px;
 }
 
 /* Inputs */
@@ -255,8 +264,13 @@ button {
     color: #fff;
     border: none;
     border-radius: 4px;
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     cursor: pointer;
+
+    padding: 10px 15px;
+    font-size: 1em;
+    width: 100%;
+    max-width: 150px;
 }
 
 button:hover {
@@ -269,5 +283,25 @@ button:hover {
 
 .btn-logout:hover {
     background-color: #b71c1c;
+}
+
+@media (max-width: 768px) {
+  #title {
+    margin-top: 8rem;
+  }
+  .container {
+      width: 95%;
+      padding: 10px;
+  }
+
+  .header {
+    width: 100%;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  table {
+    width: 100%;
+  }
 }
 

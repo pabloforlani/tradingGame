@@ -25,24 +25,26 @@
             </div>
         </div>
         <div class="header-item">
-            <button class="btn-options" onclick="toggleOptions()">Opciones</button>
-            <div id="options-menu">
-                <label for="language-select">Language:</label>
-                <select id="language-select">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                </select>
-                <br>
-                <button onclick="window.location.href='more-info.html'">Más Información</button>
-            </div>
+            <button class="btn-logout" id="headerLogout" onclick="logout()">Salir</button>
         </div>
         <div class="header-item">
-            <button class="btn-logout" onclick="logout()">Salir</button>
+          <div id="headerButtons">
+            <button class="btn-options" id="headerOption" onclick="toggleOptions()">Opciones</button>
+            <div id="options-menu">
+              <label for="language-select">Language:</label>
+              <select id="language-select">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+              </select>
+              <br>
+              <button onclick="window.location.href='more-info.html'">Más Información</button>
+            </div>
+          </div>
         </div>
     </div>
     
-    <div class="container">
+    <div class="container" id="title">
       <h1>Futures Trading Simulator</h1>
 
       <div class="section">
@@ -55,7 +57,7 @@
           <br />
         </div>
 
-        <canvas id="price-chart" width="800" height="500"></canvas>
+        <canvas id="price-chart" width="800%" height="400%"></canvas>
 
         <div id="function-button">
           <button id="buy-button" class="btn-buy">Buy</button>
@@ -122,15 +124,15 @@
         <table>
           <thead>
             <tr>
+              <th>Actions</th>
               <th>Type</th>
+              <th>PNL(%)</th>
+              <th>PNL(USDT)</th>
               <th>Price</th>
               <th>Leverage</th>
               <th>Investment</th>
               <th>Take Profit</th>
               <th>Stop Loss</th>
-              <th>PNL(USDT)</th>
-              <th>PNL(%)</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody id="orders-list">
@@ -146,12 +148,12 @@
           <thead>
             <tr>
               <th>Type</th>
+              <th>PNL(%)</th>
+              <th>PNL(USDT)</th>
               <th>Opened Price</th>
               <th>Closed Price</th>
               <th>Leverage</th>
               <th>Investment</th>
-              <th>PNL(USDT)</th>
-              <th>PNL(%)</th>
             </tr>
           </thead>
           <tbody id="closed-orders-list">

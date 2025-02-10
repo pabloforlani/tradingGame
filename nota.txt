@@ -8,4 +8,4 @@ Acciones pendientes:
 
 Observaciones importantes:
 
-* Al precio del bitcoin se le suma un random en la unidad para que no quede tan plano el grafico. (Math.random() * 15).
+* .
