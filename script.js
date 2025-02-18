@@ -655,7 +655,8 @@ function toggleOptions() {
 }
 
 function logout() {
-  alert("Cerrar sesión aún no está configurado.");
+  sessionStorage.clear()
+  window.location.href = 'login.html';
 }
 
 // Actualizar Saldo y Precio en Header
