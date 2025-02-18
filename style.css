@@ -222,6 +222,7 @@ footer a:hover {
 
 /* PNL Details Hover */
 #pnl-details {
+    overflow: unset;
     display: none;
     position: absolute;
     top: 25px;
